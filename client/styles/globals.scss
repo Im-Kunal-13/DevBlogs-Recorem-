@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=Kaushan+Script&display=swap');
+
+.landing-review2 {
+  background: linear-gradient(135deg, #21d2fe 10%, #313ef7, #440496);
+  background-size: 110%;
+}
+.landing-review2-reverse {
+  background: linear-gradient(135deg, #313ef7 30%, #21d2fe);
+  background-size: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.custom-shape-divider-bottom-1649408986 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1649408986 svg {
+  position: relative;
+  display: block;
+  width: calc(130% + 1.3px);
+  height: 300px;
+}
+
+.custom-shape-divider-bottom-1649408986 .shape-fill {
+  fill: #ffffff;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .custom-shape-divider-bottom-1649408986 svg {
+    width: calc(140% + 1.3px);
+    height: 121px;
+  }
+}
+
+.mantine-w29q45.mantine-Drawer-header {
+  font-size: 25px !important;
+
+  button.mantine-UnstyledButton-root.mantine-ActionIcon-root.mantine-Drawer-closeButton.mantine-pjgw9t {
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  button.mantine-UnstyledButton-root.mantine-ActionIcon-root.mantine-Drawer-closeButton.mantine-pjgw9t:hover {
+    background-color: transparent;
+  }
+}
+
+.gradient-text {
+  background-color: #f09433;
+  background: linear-gradient(45deg, #cc2366, #e6683c, #f09433, yellow);
+  // background-size: 110%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  padding-right: 5px;
+}
+
+.font__kaushan {
+  font-family: "Kaushan Script", cursive;
+}
+
