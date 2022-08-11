@@ -6,25 +6,27 @@ import { AiOutlineFlag } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { MdOutlineEventNote } from "react-icons/md";
+import {FaRegUser, FaRegHeart} from "react-icons/fa"
 import {
   ArrowsLeftRight,
   MessageCircle,
   Settings,
   Trash,
 } from "tabler-icons-react";
+import { avatar } from "../assets/images/index";
 
-type Props = { controlComponent: JSX.Element };
+type Props = {};
 
-const ProfileMenu = ({ controlComponent }: Props) => {
+const ProfileMenu = () => {
   const getMenuItemClasses = (type: string) =>
     classNames({
-      "hover:bg-themeBlue1 hover:bg-opacity-10 hover:text-themeBlue1":
+      "hover:bg-themeBlue1 hover:bg-opacity-10 hover:text-themeBlue3":
         type === "link",
       "hover:bg-red-600 hover:bg-opacity-10 hover:text-red-600":
         type === "danger",
     });
   return (
-    <Menu control={controlComponent} size="lg" shadow="xl">
+    <Menu.Dropdown>
       <div
         className="flex items-center mt-3 px-5 rounded hover:bg-white hover:bg-opacity-20 py-2 cursor-pointer w-full transition-all justify-between"
         id="sidebar-profile"
@@ -34,7 +36,7 @@ const ProfileMenu = ({ controlComponent }: Props) => {
           <p className="text-gray-400 font-medium text-sm">Software Engineer</p>
         </div>
         <Image
-          src="/avatar.jpg"
+          src={avatar}
           style={{ borderRadius: "50%" }}
           width={45}
           height={45}
@@ -42,12 +44,17 @@ const ProfileMenu = ({ controlComponent }: Props) => {
         />
       </div>
       <div className="px-1">
-        {/* <Menu.Label>2002kunalmondal13@gmail.com</Menu.Label> */}
         <Menu.Item
-          icon={<Settings size={20} />}
+          icon={<FaRegUser size={17} />}
           className={getMenuItemClasses("link")}
         >
-          User Settings
+         Your Profile
+        </Menu.Item>
+        <Menu.Item
+          icon={<MdOutlineEventNote size={17} />}
+          className={getMenuItemClasses("link")}
+        >
+         Your Articles
         </Menu.Item>
         <Menu.Item
           icon={<MessageCircle size={20} />}
@@ -57,22 +64,16 @@ const ProfileMenu = ({ controlComponent }: Props) => {
         </Menu.Item>
         <Divider />
         <Menu.Item
-          icon={<AiOutlineFlag size={20} />}
+          icon={<FaRegHeart size={17} />}
           className={getMenuItemClasses("link")}
         >
-          Pages
+          Liked Posts
         </Menu.Item>
         <Menu.Item
-          icon={<HiOutlineUserGroup size={20} />}
+          icon={<Settings size={20} />}
           className={getMenuItemClasses("link")}
         >
-          Groups
-        </Menu.Item>
-        <Menu.Item
-          icon={<MdOutlineEventNote size={20} />}
-          className={getMenuItemClasses("link")}
-        >
-          Events
+          Account Settings
         </Menu.Item>
         <Divider />
         <Menu.Label>Danger zone</Menu.Label>
@@ -96,7 +97,7 @@ const ProfileMenu = ({ controlComponent }: Props) => {
           Delete my account
         </Menu.Item>
       </div>
-    </Menu>
+    </Menu.Dropdown>
   );
 };
 

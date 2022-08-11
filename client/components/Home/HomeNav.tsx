@@ -167,14 +167,15 @@ const HomeNav = (props: Props) => {
     <motion.div
       whileInView={{ opacity: [0, 1] }}
       transition={{ duration: 1, ease: "backOut" }}
+      className={styles.app__navbar}
     >
       <Header
         height={HEADER_HEIGHT}
         className={`w-full bg-transparent border-none py-12`}
-        id={styles.navbar}
+        id={`${styles.navbar}`}
       >
         <Container
-          className={`${classes.header} m-0 flex w-full max-w-full sm:px-40 px-5`}
+          className={`${classes.header} flex w-full max-w-full sm:px-20 xl1:px-40 px-5`}
         >
           <div className="flex items-center gap-2">
             <FaTelegramPlane size={35} color="black" />
@@ -214,34 +215,27 @@ const HomeNav = (props: Props) => {
                 <FaRegBell size={22.5} />
               </Indicator>
             </div>
-            <ProfileMenu
-              controlComponent={
-                <Tooltip
-                  label="Profile"
-                  withArrow
-                  placement="center"
-                  position="bottom"
-                  style={{ display: "flex", width: "100%" }}
-                >
-                  <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg ml-2">
-                    <Image
-                      src={avatar}
-                      className="rounded-full"
-                      alt="profile"
-                      width={50}
-                      height={50}
-                    />
-                    <p className="ml-2 font__kaushan tracking-widest cursor-pointer">
-                      <span className="text-gray-400 text-14">Hi, </span>{" "}
-                      <span className="text-black font-bold ml-1 text-14">
-                        Kunal
-                      </span>
-                    </p>
-                    <MdKeyboardArrowDown className="text-gray-400 text-14" />
-                  </div>
-                </Tooltip>
-              }
-            />
+            <Menu trigger="click" shadow="xl">
+              <Menu.Target>
+                <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg ml-2">
+                  <Image
+                    src={avatar}
+                    className="rounded-full"
+                    alt="profile"
+                    width={50}
+                    height={50}
+                  />
+                  <p className="ml-2 font__kaushan tracking-widest cursor-pointer">
+                    <span className="text-gray-400 text-14">Hi, </span>{" "}
+                    <span className="text-black font-bold ml-1 text-14">
+                      Kunal
+                    </span>
+                  </p>
+                  <MdKeyboardArrowDown className="text-gray-400 text-14" />
+                </div>
+              </Menu.Target>
+              <ProfileMenu />
+            </Menu>
           </div>
 
           <Burger
@@ -249,9 +243,9 @@ const HomeNav = (props: Props) => {
             onClick={() => {
               setDrawerActive(true);
             }}
-            className={`${classes.burger} block xl:hidden text-white`}
+            className={`${classes.burger} block xl:hidden`}
             size="sm"
-            color="white"
+            color="black"
           />
         </Container>
       </Header>

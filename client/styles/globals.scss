@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=Kaushan+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff&family=Kaushan+Script&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 .landing-review2 {
   background: linear-gradient(135deg, #21d2fe 10%, #313ef7, #440496);
@@ -71,4 +72,9 @@
 .font__kaushan {
   font-family: "Kaushan Script", cursive;
 }
-
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+.mantine-uquezq.mantine-Input-rightSection.mantine-Select-rightSection {
+  display: none;
+}

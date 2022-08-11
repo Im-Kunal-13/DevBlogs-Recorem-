@@ -1,15 +1,40 @@
+import Image from "next/image";
 import React from "react";
 import HomeNav from "../components/Home/HomeNav";
+import BlogList from "../containers/BlogList/BlogList";
+import Search from "../containers/Search/Search";
+import { planeBlue1, planeCyan1 } from "../assets/images/index";
+import { motion } from "framer-motion";
+import Socials from "../containers/Socials/Socials";
 
 type Props = {};
 
 const Home = (props: Props) => {
   return (
-    <div>
+    <div
+      className="w-screen overflow-x-hidden relative h-screen"
+      id="home"
+      style={{ height: "100vh" }}
+    >
+      <motion.div
+        className="fixed m-auto w-52 h-fit animate-float1 lg:block hidden z-10"
+        style={{ transform: "rotateY(180deg) rotate(-5deg)" }}
+        whileInView={{ opacity: [0, 1], bottom: [-100, 200], left: [300, 30] }}
+        transition={{ duration: 1.5, ease: "backOut" }}
+      >
+        <Image src={planeBlue1} className="" />
+      </motion.div>
+      <motion.div
+        className="fixed m-auto w-52 h-fit animate-float2 lg:block hidden z-10"
+        whileInView={{ opacity: [0, 1], top: [500, 100], right: [500, 100] }}
+        transition={{ duration: 1.5, ease: "backOut" }}
+      >
+        <Image src={planeCyan1} className="" />
+      </motion.div>
       <svg
         viewBox="0 0 200 200"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-35-rem absolute m-auto top-0 bottom-0 -left-96"
+        className="h-35-rem 2xl:h-45-rem fixed m-auto top-0 bottom-0 -left-96 2xl:-left-25-rem -z-10"
       >
         <path
           fill="#21D2FE"
@@ -20,7 +45,7 @@ const Home = (props: Props) => {
       <svg
         viewBox="0 0 200 200"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-40-rem absolute m-auto -top-20 -right-96"
+        className="h-40-rem 2xl:h-60-rem fixed m-auto -top-20 -right-96 2xl:-right-35-rem -z-10"
       >
         <path
           fill="#4629dd"
@@ -29,6 +54,9 @@ const Home = (props: Props) => {
         />
       </svg>
       <HomeNav />
+      <Search />
+      <Socials />
+      <BlogList />
     </div>
   );
 };

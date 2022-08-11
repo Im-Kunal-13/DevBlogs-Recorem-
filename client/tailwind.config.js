@@ -17,7 +17,7 @@ module.exports = {
         lg2: "1200px",
         xl1: "1400px",
         xl2: "1500px",
-        xl6: "1900px"
+        xl6: "1900px",
       },
       colors: () => ({
         themeBlue1: "#313EF7",
@@ -29,11 +29,17 @@ module.exports = {
         themeViolet1: "#440496",
         themeBlue2: "rgba(6, 189, 196, 0.78)",
         themeBlue3: "#4629dd",
+        inputBg: "#E9EEF3",
       }),
       boxShadow: {
         logCard: "0px 0px 10px 2px rgba(0, 0, 0, 0.5)",
+        black1: "0px 0px 10px 1px rgba(0, 0, 0, 0.5)",
+        dotCyan: "0px 0px 10px 1px #13E7FC",
+        dotBlue: "0px 0px 10px 1px #313EF7",
+        dotViolet: "0px 0px 10px 1px #440496",
         inputTheme: "0 5px 20px 3px rgb(49 62 247 / 25%)",
         whity: "0 0 5px 0 white",
+        searchInput: "0 5px 50px 0px rgba(0, 0 ,0, .2)",
       },
       spacing: {
         160: "40rem",
@@ -58,11 +64,23 @@ module.exports = {
       },
       animation: {
         float: "float 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float1: "float1 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float2: "float2 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
       keyframes: {
         float: {
           "50%": {
             top: "60px",
+          },
+        },
+        float1: {
+          "50%": {
+            bottom: "210px",
+          },
+        },
+        float2: {
+          "50%": {
+            top: "90px",
           },
         },
       },
