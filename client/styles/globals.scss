@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff&family=Kaushan+Script&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+
+@import url("https://cdn.syncfusion.com/ej2/material.css");
 
 .landing-review2 {
   background: linear-gradient(135deg, #21d2fe 10%, #313ef7, #440496);
@@ -77,4 +79,59 @@
 }
 .mantine-uquezq.mantine-Input-rightSection.mantine-Select-rightSection {
   display: none;
+}
+
+.mantine-uquezq.mantine-Input-rightSection.mantine-MultiSelect-rightSection {
+  svg {
+    height: 35px !important;
+  }
+}
+
+#bio_toolbar_wrapper {
+  border: none !important;
+}
+
+#biorte-view {
+  border: none !important;
+}
+
+#description {
+  border: none !important;
+}
+#description_rte-edit-view {
+  min-height: 25rem;
+  background-color: transparent !important;
+}
+
+#descriptionrte-view {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Trial warning  */
+#js-licensing {
+  display: none;
+}
+#description_toolbar {
+  background-color: transparent !important;
+  border: none !important;
+}
+.e-toolbar-items.e-toolbar-multirow {
+  background-color: transparent !important;
+}
+
+.e-tbar-btn.e-control.e-btn.e-lib.e-icon-btn {
+  background-color: transparent !important;
+}
+
+.e-toolbar-items {
+  background-color: transparent !important;
+}
+#description_toolbar_nav {
+  border: none !important;
+  background-color: transparent !important;
+}
+#description_toolbar_popup {
+  border: none !important;
+  background-color: transparent !important;
 }

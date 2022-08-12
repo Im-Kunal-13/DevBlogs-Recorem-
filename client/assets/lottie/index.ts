@@ -4,3 +4,4 @@ export { default as lf30_editor_uwawpxul } from "./lf30_editor_uwawpxul.json";
 export { default as lf30_editor_wxntyiss } from "./lf30_editor_wxntyiss.json";
 export {default as lottie1} from "./lottie1.json"
 export {default as search} from "./search.json"
+export {default as upload} from "./upload.json"

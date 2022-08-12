@@ -108,12 +108,7 @@ const Navbar = (props: Props) => {
   const { classes } = useStyles();
 
   //@ts-ignore
-  const {
-    drawerActive,
-    setDrawerActive,
-    setLoginModalActive,
-    setRegisterModalActive,
-  } = useAppStateContext();
+  const {drawerActive, setDrawerActive, setLoginModalActive, setRegisterModalActive} = useAppStateContext();
 
   const getLinkClasses = (label: string) =>
     classnames(
@@ -138,6 +133,7 @@ const Navbar = (props: Props) => {
               onClick={(event) => event.preventDefault()}
             >
               <Center>
+                {/* @ts-ignore */}
                 <span className={classes.linkLabel}>{link.label}</span>
                 <IoIosArrowDown size={15} className="ml-2" />
               </Center>
@@ -203,7 +199,7 @@ const Navbar = (props: Props) => {
                 LOGIN
               </button>
               <button
-                className={`font-semibold hover:text-white text-gray-200 text-md bg-black bg-opacity-20 px-5 py-1 rounded hover:shadow hover:bg-opacity-30 border-transparent border transition-all hover:scale-95 hover:shadow-white font__kaushan`}
+                className={`font-semibold hover:text-white text-gray-200 text-md bg-black bg-opacity-20 px-5 py-1 rounded  border-transparent border transition-all hover:scale-95 hover:shadow-whity font__kaushan`}
                 style={{ borderWidth: "1.75px" }}
                 onClick={() => setRegisterModalActive(true)}
               >

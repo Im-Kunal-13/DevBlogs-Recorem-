@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import BlobSvg from "../../components/Hero/BlogSvg";
 import Lottie from "lottie-web";
+//@ts-ignore
 import { lottie1 } from "../../assets/lottie";
 import Navbar from "../../components/Navbar/Navbar";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";

@@ -2,22 +2,22 @@ import { Divider, Menu } from "@mantine/core";
 import classNames from "classnames";
 import Image from "next/image";
 import React from "react";
-import { AiOutlineFlag } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
-import { HiOutlineUserGroup } from "react-icons/hi";
 import { MdOutlineEventNote } from "react-icons/md";
-import {FaRegUser, FaRegHeart} from "react-icons/fa"
-import {
-  ArrowsLeftRight,
-  MessageCircle,
-  Settings,
-  Trash,
-} from "tabler-icons-react";
+import { FaRegUser, FaRegHeart } from "react-icons/fa";
+import { BiPlus } from "react-icons/bi";
+import { ArrowsLeftRight, Trash } from "tabler-icons-react";
 import { avatar } from "../assets/images/index";
+import { useAppStateContext } from "../context/contextProvider";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 const ProfileMenu = () => {
+  const router = useRouter();
+  //@ts-ignore
+  const { setLogoutModalActive } = useAppStateContext();
+
   const getMenuItemClasses = (type: string) =>
     classNames({
       "hover:bg-themeBlue1 hover:bg-opacity-10 hover:text-themeBlue3":
@@ -28,7 +28,7 @@ const ProfileMenu = () => {
   return (
     <Menu.Dropdown>
       <div
-        className="flex items-center mt-3 px-5 rounded hover:bg-white hover:bg-opacity-20 py-2 cursor-pointer w-full transition-all justify-between"
+        className="flex items-center mt-3 px-5 rounded hover:bg-white hover:bg-opacity-20 py-2 cursor-pointer w-13.5-rem transition-all justify-between"
         id="sidebar-profile"
       >
         <div>
@@ -47,39 +47,48 @@ const ProfileMenu = () => {
         <Menu.Item
           icon={<FaRegUser size={17} />}
           className={getMenuItemClasses("link")}
+          onClick={() => {
+            router.push("/profile/me");
+          }}
         >
-         Your Profile
+          Your Profile
         </Menu.Item>
         <Menu.Item
           icon={<MdOutlineEventNote size={17} />}
           className={getMenuItemClasses("link")}
         >
-         Your Articles
+          Your Articles
         </Menu.Item>
         <Menu.Item
-          icon={<MessageCircle size={20} />}
+          icon={<BiPlus size={20} />}
           className={getMenuItemClasses("link")}
+          onClick={() => {
+            router.push("/createPost");
+          }}
         >
-          Messages
+          New Article
         </Menu.Item>
-        <Divider />
+        {/* <Divider /> */}
         <Menu.Item
           icon={<FaRegHeart size={17} />}
           className={getMenuItemClasses("link")}
         >
           Liked Posts
         </Menu.Item>
-        <Menu.Item
+        {/* <Menu.Item
           icon={<Settings size={20} />}
           className={getMenuItemClasses("link")}
         >
           Account Settings
-        </Menu.Item>
+        </Menu.Item> */}
         <Divider />
         <Menu.Label>Danger zone</Menu.Label>
         <Menu.Item
           icon={<FiLogOut size={20} />}
           className={getMenuItemClasses("danger")}
+          onClick={() => {
+            setLogoutModalActive(true);
+          }}
         >
           Logout
         </Menu.Item>

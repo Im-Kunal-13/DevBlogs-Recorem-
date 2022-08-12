@@ -163,7 +163,9 @@ const RegisterModal = (props: Props) => {
     <Modal
       opened={registerModalActive}
       onClose={() => setRegisterModalActive(false)}
-      classNames={{ modal: "h-35-rem", close: "z-10" }}
+      classNames={{ modal: "h-35-rem w-30-rem", close: "z-10" }}
+      overlayBlur={3}
+      overlayOpacity={0.55}
     >
       <div className="w-full flex flex-col items-center justify-center relative bottom-24">
         <span className="p-4 landing-review2-reverse rounded-full shadow-logCard">
@@ -263,7 +265,7 @@ const RegisterModal = (props: Props) => {
             onChange={onFormChange}
             autoComplete="current-password"
           />
-          <div className="px-3 mb-7 flex items-center gap-2 font__kaushan tracking-wider">
+          <div className="px-3 mb-8 flex items-center gap-2 font__kaushan tracking-wider">
               <span>Already registered?</span>
             <Link href="#">
               <a className="text-sm text-themeBlue1 hover:underline">

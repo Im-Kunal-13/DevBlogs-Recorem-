@@ -2,16 +2,16 @@ import { metal, cement, chemical, mining, oil } from "./images/index";
 
 export const headerLinks = [
   {
-    link: "/features",
-    label: "Features",
+    link: "/home",
+    label: "Home",
   },
   {
     link: "/about",
     label: "About",
   },
   {
-    link: "/reviews",
-    label: "Reviews",
+    link: "/featuers",
+    label: "Featuers",
   },
 
   {

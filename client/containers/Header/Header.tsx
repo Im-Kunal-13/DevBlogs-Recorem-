@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-web";
+//@ts-ignore
 import { lf30_editor_wxntyiss } from "../../Assets/lottie";
 import { AnimatePresence, motion } from "framer-motion";
 

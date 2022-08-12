@@ -1,26 +1,34 @@
 import Image from "next/image";
-import { useState } from "react";
-import { blogsData } from "../../data/blogsData";
 import { avatar } from "../../assets/images/index";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { HiOutlineShare, HiDotsVertical } from "react-icons/hi";
 import { BiCommentDetail } from "react-icons/bi";
-import styles from "./BlogItem.module.scss";
 import { Tooltip } from "@mantine/core";
+import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+
+import styles from "./BlogItem.module.scss";
 
 type Props = {};
 
 const BlogItem = (props: Props) => {
-  const [isClick, setClick] = useState(false);
+  const router = useRouter();
   return (
-    <div className="xl:col-span-2 lg:col-span-3 col-span-6 flex flex-col flex-start bg-white">
+    <motion.div
+      className="xl:col-span-2 lg:col-span-3 col-span-6 flex flex-col flex-start bg-transparent shadow-searchInput"
+      whileInView={{ scale: [0, 1], opacity: [0, 1] }}
+      transition={{ duration: .5, ease: "easeOut" }}
+    >
       <img
         src={"/blogPic1.jpg"}
         alt="cover"
         className="object-cover rounded overflow-hidden hover:shadow-black1 transition-all md:hover:scale-125 cursor-pointer"
+        onClick={() => {
+          router.push("/blog/121212");
+        }}
       />
-      <div className="px-5 shadow border rounded overflow-hidden">
+      <div className="px-5 rounded overflow-hidden">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <Tooltip
@@ -63,23 +71,49 @@ const BlogItem = (props: Props) => {
             162
           ) + "....."}
         </p>
+
         <div className="flex items-center justify-between pb-5">
-          <div className="flex items-center gap-3">
-            <Image
-              src={avatar}
-              className="rounded-full"
-              width={50}
-              height={50}
-            />
+          <div className="flex items-center gap-3 cursor-pointer">
+            <Tooltip
+              label="View Profile"
+              withArrow
+              position="bottom"
+              offset={23}
+            >
+              <button onClick={() => router.push("/profile/454545")}>
+                <Image
+                  src={avatar}
+                  className="rounded-full"
+                  width={50}
+                  height={50}
+                />
+              </button>
+            </Tooltip>
             <div>
               <p>Kunal Mondal</p>
               <p className="text-gray-400">June 03, 2021</p>
             </div>
           </div>
-          <HiOutlineArrowNarrowRight />
+          <Tooltip
+            label="View Blog"
+            withArrow
+            // @ts-ignore
+            placement="center"
+            position="top"
+            offset={15}
+          >
+            <button
+              className="p-3 rounded-full bg-themeBlue3 shadow-whity transition-all hover:scale-125"
+              onClick={() => {
+                router.push("/blog/5656");
+              }}
+            >
+              <HiOutlineArrowNarrowRight size={20} color="white" />
+            </button>
+          </Tooltip>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

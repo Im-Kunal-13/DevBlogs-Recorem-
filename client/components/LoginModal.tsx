@@ -26,6 +26,8 @@ const LoginModal = (props: Props) => {
       opened={loginModalActive}
       onClose={() => setLoginModalActive(false)}
       classNames={{ modal: "h-25-rem", close: "z-10" }}
+      overlayBlur={3}
+      overlayOpacity={0.55}
     >
       <div className="w-full flex flex-col items-center justify-center relative bottom-24">
         <span className="p-4 landing-review2-reverse rounded-full shadow-logCard">

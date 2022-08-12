@@ -23,6 +23,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import styles from "./HomeNav.module.scss";
 import Image from "next/image";
 import ProfileMenu from "../ProfileMenu";
+import { useRouter } from "next/router";
 
 const HEADER_HEIGHT = 80;
 
@@ -109,6 +110,7 @@ type Props = {};
 
 const HomeNav = (props: Props) => {
   const { classes } = useStyles();
+  const router = useRouter();
 
   //@ts-ignore
   const {
@@ -120,7 +122,11 @@ const HomeNav = (props: Props) => {
 
   const getLinkClasses = (label: string) =>
     classnames(
-      `py-2 px-5 mx-1 transition-all font-semibold hover:text-black text-gray-800 text-md nav__link uppercase ${styles.nav__link} font__kaushan`,
+      `py-2 px-5 mx-1 transition-all font-semibold hover:text-black text-gray-800 text-md nav__link uppercase ${
+        label === "Home" && router.pathname === "/home"
+          ? styles.nav__link__selected
+          : styles.nav__link
+      } font__kaushan`,
       {
         "text-themeBlue1": label === "Home",
       }
@@ -141,6 +147,7 @@ const HomeNav = (props: Props) => {
               onClick={(event) => event.preventDefault()}
             >
               <Center>
+                {/* @ts-ignore */}
                 <span className={classes.linkLabel}>{link.label}</span>
                 <IoIosArrowDown size={15} className="ml-2" />
               </Center>
@@ -156,7 +163,12 @@ const HomeNav = (props: Props) => {
         key={link.label}
         href={link.link}
         className={getLinkClasses(link.label)}
-        onClick={(event) => event.preventDefault()}
+        onClick={(event) => {
+          event.preventDefault();
+          if (link.link === "/home") {
+            router.push("/home");
+          }
+        }}
       >
         {link.label}
       </a>

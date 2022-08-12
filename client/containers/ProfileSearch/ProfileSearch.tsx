@@ -2,27 +2,14 @@ import { Select } from "@mantine/core";
 import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
 
+import styles from "./ProfileSearch.module.scss";
+
 type Props = {};
 
-const Search = (props: Props) => {
+const ProfileSearch = (props: Props) => {
   return (
-    <div className="flex items-center flex-col justify-center py-14 mt-24">
-      <h1 className="font-bold text-4xl font__kaushan tracking-wider relative">
-        Plan Your Success!
-        <div className="absolute -top-5 -right-11">
-          <div className="flex items-center gap-2">
-            <span className="rounded-full bg-themeCyan1 w-3 h-3 inline-block shadow-dotCyan" />
-            <div className="flex flex-col gap-2">
-              <span className="rounded-full bg-themeBlue1 w-3 h-3 inline-block shadow-dotBlue" />
-              <span className="rounded-full bg-themeViolet1 w-3 h-3 inline-block shadow-dotViolet" />
-            </div>
-          </div>
-        </div>
-      </h1>
-      <p className="font__kaushan tracking-wider mt-3 text-gray-400 font-semiboldfont-semibold">
-        Find your favorite blogs on our network!
-      </p>
-      <div className="mt-6 p-5 shadow-searchInput rounded flex items-center gap-3">
+    <div className="flex items-center flex-col justify-center py-14">
+      <div className="p-5 shadow-searchInput rounded flex items-center gap-3">
         <Select
           placeholder="Search by category"
           searchable
@@ -55,4 +42,4 @@ const Search = (props: Props) => {
   );
 };
 
-export default Search;
+export default ProfileSearch;
