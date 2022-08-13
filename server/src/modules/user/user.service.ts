@@ -7,3 +7,7 @@ export async function createUser(user: Omit<User, "comparePassword">) {
 export async function findUserByEmail(email: User["email"]) {
   return UserModel.findOne({ email });
 }
+
+export async function findUserById(userId: string) {
+  return UserModel.findById({ _id: userId });
+}

@@ -7,3 +7,8 @@ export async function createPost(post: Post) {
 export function findPosts(query: any) {
   return PostModel.find(query).populate("owner", "_id username email pic").lean();
 }
+
+export async function findPost(id: string) {
+  return PostModel.findById(id).populate("owner", "_id username email pic").lean();
+}
+

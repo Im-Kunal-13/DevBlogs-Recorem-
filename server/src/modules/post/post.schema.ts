@@ -8,9 +8,12 @@ export const registerPostSchema = {
     description: string({
       required_error: "description is required",
     }),
-    photo: string({
+    coverImage: string({
       required_error: "Please upload a picture of your post.",
-    }).default(""),
+    }),
+    categories: string({
+      required_error: "Enter the categories of the post.",
+    }).array(),
   }),
 };
 
