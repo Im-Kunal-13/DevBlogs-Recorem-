@@ -50,7 +50,7 @@ const Hero = (props: Props) => {
             whileInView={{ opacity: [0, 1], top: [400, 40], left: [200, 0] }}
             transition={{ duration: 1.5, ease: "backOut" }}
           >
-            <Image src={planeBlue1} alt="" />
+            <Image src={planeBlue1} alt="" layout="intrinsic" />
           </motion.div>
           <motion.div
             className="text-center lg:text-start"

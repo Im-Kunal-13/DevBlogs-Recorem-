@@ -7,25 +7,29 @@ import { BiCommentDetail } from "react-icons/bi";
 import { Tooltip } from "@mantine/core";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import { Markup } from "interweave";
 
 import styles from "./BlogItem.module.scss";
+import { Blog } from "../../types";
+import { useEffect } from "react";
 
-type Props = {};
+type Props = { blog: Blog };
 
-const BlogItem = (props: Props) => {
+const BlogItem = ({ blog }: Props) => {
   const router = useRouter();
+
   return (
     <motion.div
       className="xl:col-span-2 lg:col-span-3 col-span-6 flex flex-col flex-start bg-transparent shadow-searchInput"
       whileInView={{ scale: [0, 1], opacity: [0, 1] }}
-      transition={{ duration: .5, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <img
-        src={"/blogPic1.jpg"}
+        src={blog?.coverImage}
         alt="cover"
-        className="object-cover rounded overflow-hidden hover:shadow-black1 transition-all md:hover:scale-125 cursor-pointer"
+        className="object-cover rounded overflow-hidden hover:shadow-black1 transition-all md:hover:scale-125 cursor-pointer h-72"
         onClick={() => {
-          router.push("/blog/121212");
+          router.push(`/blog/${blog?._id}`);
         }}
       />
       <div className="px-5 rounded overflow-hidden">
@@ -52,25 +56,21 @@ const BlogItem = (props: Props) => {
           </div>
         </div>
         <div className="flex items-center gap-2 pb-4">
-          <span className="py-1 px-3 text-xs bg-themeBlue1 rounded text-white">
-            Blockchain
-          </span>
-          <span className="py-1 px-3 text-xs bg-themeBlue1 rounded text-white">
-            Cryptocurrency
-          </span>
+          {blog.categories.map((category: string) => (
+            <span
+              className="py-1 px-3 text-xs bg-themeBlue1 rounded text-white"
+              key={category}
+            >
+              {category}
+            </span>
+          ))}
         </div>
         <p className="text-xl font-bold pb-4 font-montserrat">
-          {"Ethereum just pulled off its final test run ahead of one of the most important events in crypto".slice(
-            0,
-            52
-          ) + "..."}
+          {blog?.title?.slice(0, 52) + "..."}
         </p>
-        <p className="text-gray-400 font-semibold pb-5">
-          {"Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aut sapiente culpa optio! Atque accusantium reprehenderit culpa amet neque quod architecto sunt eligendi magni? Asperiores soluta consectetur zzdolor architecto nam".slice(
-            0,
-            162
-          ) + "....."}
-        </p>
+        <div className="text-gray-400 font-semibold pb-5">
+          {<Markup content={blog?.description?.slice(0, 162) + "....."} />}
+        </div>
 
         <div className="flex items-center justify-between pb-5">
           <div className="flex items-center gap-3 cursor-pointer">
@@ -80,18 +80,21 @@ const BlogItem = (props: Props) => {
               position="bottom"
               offset={23}
             >
-              <button onClick={() => router.push("/profile/454545")}>
+              <button
+                onClick={() => router.push(`/profile/${blog?.owner?._id}`)}
+              >
                 <Image
-                  src={avatar}
+                  src={blog?.owner.pic}
                   className="rounded-full"
+                  alt="Blog owner"
                   width={50}
                   height={50}
                 />
               </button>
             </Tooltip>
             <div>
-              <p>Kunal Mondal</p>
-              <p className="text-gray-400">June 03, 2021</p>
+              <p className="font-semibold">{blog?.owner?.username}</p>
+              <p className="text-gray-400">{blog?.timeCreated}</p>
             </div>
           </div>
           <Tooltip
@@ -105,7 +108,7 @@ const BlogItem = (props: Props) => {
             <button
               className="p-3 rounded-full bg-themeBlue3 shadow-whity transition-all hover:scale-125"
               onClick={() => {
-                router.push("/blog/5656");
+                router.push(`blog/${blog?._id}`);
               }}
             >
               <HiOutlineArrowNarrowRight size={20} color="white" />

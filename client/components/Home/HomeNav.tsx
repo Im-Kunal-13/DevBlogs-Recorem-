@@ -7,7 +7,6 @@ import {
   Container,
   Group,
   Burger,
-  Tooltip,
   Indicator,
 } from "@mantine/core";
 import { IoIosArrowDown } from "react-icons/io";
@@ -16,10 +15,9 @@ import { useAppStateContext } from "../../context/contextProvider";
 import { headerLinks } from "../../assets/links";
 import { FaRegBell, FaTelegramPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { avatar } from "../../assets/images/index";
 import { BiLocationPlus } from "react-icons/bi";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
+import { avatar } from "../../assets/images/index";
 import styles from "./HomeNav.module.scss";
 import Image from "next/image";
 import ProfileMenu from "../ProfileMenu";
@@ -113,12 +111,7 @@ const HomeNav = (props: Props) => {
   const router = useRouter();
 
   //@ts-ignore
-  const {
-    drawerActive,
-    setDrawerActive,
-    setLoginModalActive,
-    setRegisterModalActive,
-  } = useAppStateContext();
+  const { drawerActive, setDrawerActive, user } = useAppStateContext();
 
   const getLinkClasses = (label: string) =>
     classnames(
@@ -231,7 +224,7 @@ const HomeNav = (props: Props) => {
               <Menu.Target>
                 <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg ml-2">
                   <Image
-                    src={avatar}
+                    src={user?.pic || avatar}
                     className="rounded-full"
                     alt="profile"
                     width={50}
@@ -240,7 +233,7 @@ const HomeNav = (props: Props) => {
                   <p className="ml-2 font__kaushan tracking-widest cursor-pointer">
                     <span className="text-gray-400 text-14">Hi, </span>{" "}
                     <span className="text-black font-bold ml-1 text-14">
-                      Kunal
+                      {user?.username?.slice(0, 10) || "User"}
                     </span>
                   </p>
                   <MdKeyboardArrowDown className="text-gray-400 text-14" />

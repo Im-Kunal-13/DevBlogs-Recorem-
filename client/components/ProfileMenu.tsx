@@ -16,7 +16,7 @@ type Props = {};
 const ProfileMenu = () => {
   const router = useRouter();
   //@ts-ignore
-  const { setLogoutModalActive } = useAppStateContext();
+  const { setLogoutModalActive, user } = useAppStateContext();
 
   const getMenuItemClasses = (type: string) =>
     classNames({
@@ -32,11 +32,11 @@ const ProfileMenu = () => {
         id="sidebar-profile"
       >
         <div>
-          <p className="text-black font-semibold">Kunal Mondal</p>
+          <p className="text-black font-semibold">{user?.username}</p>
           <p className="text-gray-400 font-medium text-sm">Software Engineer</p>
         </div>
         <Image
-          src={avatar}
+          src={user?.pic}
           style={{ borderRadius: "50%" }}
           width={45}
           height={45}
@@ -48,7 +48,7 @@ const ProfileMenu = () => {
           icon={<FaRegUser size={17} />}
           className={getMenuItemClasses("link")}
           onClick={() => {
-            router.push("/profile/me");
+            router.push(`/profile/${user?._id}`);
           }}
         >
           Your Profile

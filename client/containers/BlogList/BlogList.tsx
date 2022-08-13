@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import BlogItem from "../../components/Blog/BlogItem";
 import Lottie from "lottie-web";
-import { search } from "../../assets/lottie"
+import { search } from "../../assets/lottie";
+import { Blog } from "../../types";
 
 import styles from "./BlogList.module.scss";
-import Image from "next/image";
 
-type Props = {};
+type Props = { blogs: Blog[] };
 
-const BlogList = (props: Props) => {
+const BlogList = ({ blogs }: Props) => {
+
+  //Lottie animation
   const [mounted, setMounted] = useState(false);
 
   // Getting a reference to the animation container.
@@ -34,16 +36,15 @@ const BlogList = (props: Props) => {
     setMounted(true);
   }, []);
   return (
-    <div className="md:px-28 px-5 grid grid-cols-6 gap-10 mt-5 relative" id="blogs">
-      {true ? (
+    <div
+      className="md:px-28 px-5 grid grid-cols-6 gap-10 mt-5 relative"
+      id="blogs"
+    >
+      {blogs.length ? (
         <>
-          <BlogItem />
-          <BlogItem />
-          <BlogItem />
-          <BlogItem />
-          <BlogItem />
-          <BlogItem />
-          <BlogItem />
+          {blogs.map((blog: Blog) => (
+            <BlogItem blog={blog} key={blog._id} />
+          ))}
         </>
       ) : (
         <div className="col-span-full flex items-center flex-col justify-center relative bottom-5">

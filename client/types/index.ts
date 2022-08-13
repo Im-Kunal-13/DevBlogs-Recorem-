@@ -3,10 +3,23 @@ export enum QueryKeys {
   videos = "videos",
 }
 
-export interface Me {
+export interface User {
   _id: string;
   email: string;
   username: string;
+  pic: string;
+}
+
+export interface Blog {
+  _id: string;
+  email: string;
+  username: string;
+  coverImage: string;
+  description: string;
+  categories: string[],
+  owner: User;
+  title: string;
+  timeCreated: string;
 }
 
 export interface Video {
@@ -43,4 +56,3 @@ export interface EmployeeFormData {
   confirmPassword: boolean | string;
   mailAddress: boolean | string;
 }
-

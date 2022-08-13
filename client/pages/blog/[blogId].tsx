@@ -7,13 +7,14 @@ import ThemeLayout from "../../layout/themeLayout";
 
 const Blog = () => {
   const router = useRouter();
-  const { blogId } = router.query;
+
+  const { blogId }: any = router.query;
 
   return (
     <ThemeLayout>
       <HomeNav />
       <LogoutModal />
-      <BlogPost />
+      <BlogPost blogId={blogId} />
     </ThemeLayout>
   );
 };
