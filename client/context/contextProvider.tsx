@@ -14,6 +14,10 @@ interface AppContextInterface {
   setUser: React.Dispatch<React.SetStateAction<User>>;
   blogs: Blog[];
   setBlogs: React.Dispatch<React.SetStateAction<Blog[]>>;
+  homeSearchQuery: string;
+  setHomeSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  profileSearchQuery: string;
+  setProfileSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 export const AppStateContext = createContext<AppContextInterface | null>(null);
 
@@ -24,6 +28,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [registerModalActive, setRegisterModalActive] = useState(false);
   const [user, setUser] = useState<User>(JSON.parse("{}"));
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [homeSearchQuery, setHomeSearchQuery] = useState("");
+  const [profileSearchQuery, setProfileSearchQuery] = useState("");
 
   return (
     <AppStateContext.Provider
@@ -40,6 +46,10 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         setUser,
         blogs,
         setBlogs,
+        homeSearchQuery,
+        setHomeSearchQuery,
+        profileSearchQuery,
+        setProfileSearchQuery,
       }}
     >
       {children}

@@ -1,10 +1,12 @@
 import { Select } from "@mantine/core";
 import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { categories } from "../../assets/links/index";
+import { useAppStateContext } from "../../context/contextProvider";
 
-type Props = {};
-
-const Search = (props: Props) => {
+const Search = () => {
+  //@ts-ignore
+  const { homeSearchQuery, setHomeSearchQuery } = useAppStateContext();
   return (
     <div className="flex items-center flex-col justify-center py-14 mt-24">
       <h1 className="font-bold text-4xl font__kaushan tracking-wider relative">
@@ -22,7 +24,12 @@ const Search = (props: Props) => {
       <p className="font__kaushan tracking-wider mt-3 text-gray-400 font-semiboldfont-semibold">
         Find your favorite blogs on our network!
       </p>
-      <div className="mt-6 p-5 shadow-searchInput rounded flex items-center gap-3">
+      <form
+        className="mt-6 p-5 shadow-searchInput rounded flex items-center gap-3"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <Select
           placeholder="Search by category"
           searchable
@@ -30,11 +37,14 @@ const Search = (props: Props) => {
           classNames={{
             input: "bg-inputBg py-6 sm:pr-40 pr-24 text-start border-none",
           }}
+          onChange={(value) => {
+            setHomeSearchQuery(value);
+          }}
+          value={homeSearchQuery}
           nothingFound="No options"
-          data={["React", "Angular", "Svelte", "Vue"]}
-          styles={(theme) => ({
+          data={categories}
+          styles={(_) => ({
             item: {
-              // applies styles to selected item
               "&[data-selected]": {
                 "&, &:hover": {
                   backgroundColor: "#313EF7",
@@ -42,15 +52,17 @@ const Search = (props: Props) => {
                 },
               },
 
-              // applies styles to hovered item (with mouse or keyboard)
               "&[data-hovered]": {},
             },
           })}
         />
-        <button className="bg-themeBlue1 rounded px-5 py-3 text-white font__kaushan tracking-wider sm:block hidden">
+        <button
+          className="bg-themeBlue1 rounded px-5 py-3 text-white font__kaushan tracking-wider sm:block hidden"
+          type="button"
+        >
           Search
         </button>
-      </div>
+      </form>
     </div>
   );
 };

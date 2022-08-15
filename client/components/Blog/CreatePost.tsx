@@ -23,21 +23,9 @@ import { useMutation } from "react-query";
 import { AxiosError } from "axios";
 
 import styles from "./CreatePost.module.scss";
+import { categories } from "../../assets/links/index";
 
 type Props = {};
-
-const qualificationsData = [
-  { value: "react", label: "React" },
-  { value: "angular", label: "Angular" },
-  { value: "svelte", label: "Svelte" },
-  { value: "vue", label: "Vue" },
-  { value: "riot", label: "Riot" },
-  { value: "next", label: "Next.js" },
-  { value: "blitz", label: "Blitz.js" },
-  { value: "typescript", label: "Typescript" },
-  { value: "mongodb", label: "Mongo DB" },
-  { value: "node", label: "Node.js" },
-];
 
 const CreatePost = (props: Props) => {
   //@ts-ignore
@@ -182,6 +170,14 @@ const CreatePost = (props: Props) => {
           },
         }),
       });
+
+      setFormData({
+        title: "",
+        categories: [],
+        description: "",
+      });
+
+      setImageUrl("");
     },
     onError: () => {
       showNotification({
@@ -286,8 +282,6 @@ const CreatePost = (props: Props) => {
               <div
                 className="rounded overflow-hidden w-full"
                 ref={animationContainer}
-                // whileInView={{ scale: [0, 1], opacity: [0, 1] }}
-                // transition={{ duration: 1.5, ease: "backOut" }}
               />
               <div className="flex items-center flex-col gap-3 relative bottom-24">
                 <h1 className="font-bold font__montserrat sm:text-2xl text-md">
@@ -339,20 +333,26 @@ const CreatePost = (props: Props) => {
                 CATEGORIES
               </label>
             </div>
-            <div className="lg:col-span-1 col-span-2 px-5 py-4 shadow-searchInput rounded flex items-center">
+            <div className="lg:col-span-1 col-span-2 px-5 py-4 shadow-searchInput rounded flex items-center relative">
               <MultiSelect
-                data={qualificationsData}
+                data={categories}
                 icon={<MdCategory size={40} />}
                 placeholder="ENTER THE CATEGORIES"
                 className="w-full"
+                error={
+                  formData.categories.length === 10 &&
+                  "Maximum 10 tags are allowed."
+                }
                 classNames={{
                   input: "text-start border-none bg-transparent",
-                  error: "absolute",
+                  error: "absolute bottom-2",
                   searchInput: "text-xl font-semibold ml-4",
                 }}
-                onChange={(value: []) =>
-                  setFormData({ ...formData, categories: value })
-                }
+                onChange={(value: []) => {
+                  if (value.length <= 10) {
+                    setFormData({ ...formData, categories: value });
+                  }
+                }}
                 value={formData.categories}
                 styles={{ rightSection: { pointerEvents: "none" } }}
                 id="categories"

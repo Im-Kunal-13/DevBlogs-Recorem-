@@ -1,41 +1,64 @@
 import { Tooltip } from "@mantine/core";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { BiCommentDetail } from "react-icons/bi";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { HiDotsVertical, HiOutlineShare } from "react-icons/hi";
-import { getBlog } from "../../api/index";
+import { getBlog, likePost, unlikePost } from "../../api/index";
 import { Blog } from "../../types";
 import { Markup } from "interweave";
-import {avatar} from "../../assets/images"
+import { avatar } from "../../assets/images";
+import { useAppStateContext } from "../../context/contextProvider";
 
 import styles from "./Blog.module.scss";
 
 type Props = { blogId: string };
 
-const BlogPost = ({ blogId }: Props) => {
+const BlogPost = (props: Props) => {
   const [blog, setBlog] = useState<Blog>();
 
+  //@ts-ignore
+  const { user } = useAppStateContext();
+
+  const handleSubmitLike = async () => {
+    try {
+      const data = await likePost(props.blogId);
+      setBlog(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmitUnlike = async () => {
+    try {
+      const data = await unlikePost(props.blogId);
+      setBlog(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const init = async () => {
-    const data = await getBlog(blogId);
+    const data = await getBlog(props.blogId);
     setBlog(data);
   };
 
   useEffect(() => {
-    init();
-  }, []);
+    if (props.blogId) {
+      init();
+    }
+  }, [props.blogId]);
 
   return (
-    <div className="mt-24 flex items-center flex-col justify-center xl:px-60 lg:px-40 lg:px-20">
+    <div className="mt-24 flex items-center flex-col justify-center xl:px-60 lg:px-40">
       <h1 className="md:text-4xl sm:text-3xl text-xl font-bold sm:py-14 py-7 font-montserrat uppercase lg:px-20 text-center leading-tight">
         {blog?.title}
       </h1>
       <div className="flex items-center gap-4 sm:mb-14 mb-7">
-        <Image
+        <img
           //@ts-ignore
           src={blog?.owner?.pic || avatar}
           alt="profile"
-          className="rounded-full"
+          className="rounded-full w-14 h-14 object-cover shadow-inputTheme"
           width={60}
           height={60}
         />
@@ -52,19 +75,46 @@ const BlogPost = ({ blogId }: Props) => {
         />
         <div className="flex items-center justify-between py-5 w-full lg:px-0 sm:px-5 px-2.5">
           <div className="flex items-center gap-3">
-            <Tooltip
-              label="I like this"
-              withArrow
-              // @ts-ignore
-              placement="center"
-              position="bottom"
-            >
-              <button className="rounded-full shadow-inputTheme border p-3 transition-all hover:scale-105">
-                {/* <FaRegHeart color="#313EF7" size={20} /> */}
-                <FaHeart color="#313EF7" size={25} />
+            {blog?.owner?._id === user?._id ? (
+              <button className="rounded-full shadow-inputTheme p-2 cursor-none">
+                <FaHeart className="text-gray-300" size={20} />
               </button>
-            </Tooltip>
-            <span className="text-lg font-medium">152 likes</span>
+            ) : (
+              <Tooltip
+                label={
+                  blog?.likes?.includes(user?._id)
+                    ? "I don't like this"
+                    : "I like this"
+                }
+                withArrow
+                position="bottom"
+              >
+                {blog?.likes?.includes(user?._id) ? (
+                  <button
+                    className="rounded-full shadow-inputTheme border p-3 transition-all duration-300 hover:scale-125"
+                    onClick={handleSubmitUnlike}
+                  >
+                    <FaHeart
+                      color="#313EF7"
+                      size={25}
+                      className="hover:scale-125 transition-all duration-300"
+                    />
+                  </button>
+                ) : (
+                  <button
+                    className="rounded-full shadow-inputTheme border p-3 transition-all duration-300 hover:scale-125"
+                    onClick={handleSubmitLike}
+                  >
+                    <FaRegHeart
+                      color="#313EF7"
+                      size={25}
+                      className="hover:scale-125 transition-all duration-300"
+                    />
+                  </button>
+                )}
+              </Tooltip>
+            )}
+            <span className="text-lg font-medium">{`${blog?.likes?.length} likes`}</span>
           </div>
           <div className="flex items-center gap-7">
             <HiOutlineShare color="black" size={25} />
@@ -83,9 +133,7 @@ const BlogPost = ({ blogId }: Props) => {
             </span>
           ))}
         </div>
-        {/* <p className="text-gray-700 text-xl leading-relaxed pb-5 lg:px-0 sm:px-5 px-2.5"> */}
         <Markup content={blog?.description} />
-        {/* </p> */}
       </div>
       <div className="h-96" />
     </div>

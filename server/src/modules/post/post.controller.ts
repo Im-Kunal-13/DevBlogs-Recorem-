@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { Request, Response } from "express";
-import { createPost, findPost } from "./post.service";
+import { createPost, findPost, likePost, unlikePost } from "./post.service";
 import { RegisterPostBody } from "./post.schema";
 import { findPosts } from "./post.service";
 
@@ -9,8 +9,6 @@ export async function registerPostHandler(
   res: Response
 ) {
   const { title, description, coverImage, categories } = req.body;
-
-  console.log(req.body);
 
   const owner = res.locals.user;
 
@@ -31,6 +29,7 @@ export async function registerPostHandler(
       coverImage,
       owner,
       timeCreated,
+      likes: [],
     });
 
     return res.status(StatusCodes.CREATED).send("Post Created Successfully!");
@@ -42,7 +41,8 @@ export async function registerPostHandler(
 export async function getPostsHandler(_: Request, res: Response) {
   try {
     const posts = await findPosts({});
-    return res.status(StatusCodes.OK).send(posts);
+
+    return res.status(StatusCodes.OK).json(posts);
   } catch (error: any) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error.message);
   }
@@ -51,8 +51,6 @@ export async function getPostsHandler(_: Request, res: Response) {
 export async function getUserPostsHandler(req: Request, res: Response) {
   try {
     const { userId } = req.params;
-
-    console.log(userId);
 
     const posts = await findPosts({ owner: userId });
 
@@ -70,5 +68,29 @@ export async function getBlogHandler(req: Request, res: Response) {
     return res.status(StatusCodes.OK).json(post);
   } catch (error: any) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error.message);
+  }
+}
+
+export async function likeHandler(req: Request, res: Response) {
+  try {
+    const { postId } = req.params;
+
+    const result = await likePost(postId, res.locals.user._id);
+
+    return res.status(StatusCodes.OK).json(result);
+  } catch (err: any) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+}
+
+export async function unlikeHandler(req: Request, res: Response) {
+  try {
+    const { postId } = req.params;
+
+    const result = await unlikePost(postId, res.locals.user._id);
+
+    return res.status(StatusCodes.OK).json(result);
+  } catch (err: any) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(err.message);
   }
 }

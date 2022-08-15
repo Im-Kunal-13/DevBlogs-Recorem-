@@ -16,10 +16,11 @@ export interface Blog {
   username: string;
   coverImage: string;
   description: string;
-  categories: string[],
+  categories: string[];
   owner: User;
   title: string;
   timeCreated: string;
+  likes: User[];
 }
 
 export interface Video {

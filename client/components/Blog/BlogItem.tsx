@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { avatar } from "../../assets/images/index";
+import { useState } from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { HiOutlineShare, HiDotsVertical } from "react-icons/hi";
@@ -8,14 +7,38 @@ import { Tooltip } from "@mantine/core";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { Markup } from "interweave";
+import { likePost, unlikePost } from "../../api";
+import { useAppStateContext } from "../../context/contextProvider";
+import { Blog } from "../../types";
 
 import styles from "./BlogItem.module.scss";
-import { Blog } from "../../types";
-import { useEffect } from "react";
 
 type Props = { blog: Blog };
 
 const BlogItem = ({ blog }: Props) => {
+  const [blogCard, setBlogCard] = useState(blog);
+
+  const handleSubmitLike = async () => {
+    try {
+      const data = await likePost(blog?._id);
+      setBlogCard(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmitUnlike = async () => {
+    try {
+      const data = await unlikePost(blog?._id);
+      setBlogCard(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //@ts-ignore
+  const { user } = useAppStateContext();
+
   const router = useRouter();
 
   return (
@@ -25,29 +48,61 @@ const BlogItem = ({ blog }: Props) => {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <img
-        src={blog?.coverImage}
+        src={blogCard?.coverImage}
         alt="cover"
         className="object-cover rounded overflow-hidden hover:shadow-black1 transition-all md:hover:scale-125 cursor-pointer h-72"
         onClick={() => {
-          router.push(`/blog/${blog?._id}`);
+          router.push(`/blog/${blogCard?._id}`);
         }}
       />
       <div className="px-5 rounded overflow-hidden">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
-            <Tooltip
-              label="I like this"
-              withArrow
-              // @ts-ignore
-              placement="center"
-              position="bottom"
-            >
-              <button className="rounded-full shadow-inputTheme border p-2 transition-all hover:scale-105">
-                {/* <FaRegHeart color="#313EF7" size={20} /> */}
-                <FaHeart color="#313EF7" size={20} />
+            {blogCard?.owner?._id === user?._id ? (
+              <button className="rounded-full shadow-inputTheme p-2 transition-all hover:scale-105">
+                <FaHeart className="text-gray-300" size={20} />
               </button>
-            </Tooltip>
-            <span>152 likes</span>
+            ) : (
+              <Tooltip
+                label={
+                  blogCard?.likes?.includes(user?._id)
+                    ? "I don't like this"
+                    : "I like this"
+                }
+                withArrow
+                // @ts-ignore
+                placement="center"
+                position="bottom"
+              >
+                {blogCard?.likes?.includes(user?._id) ? (
+                  <button
+                    className="rounded-full shadow-inputTheme p-2 transition-all duration-300 hover:scale-125"
+                    onClick={() => {
+                      handleSubmitUnlike();
+                    }}
+                  >
+                    <FaHeart
+                      color="#313EF7"
+                      size={20}
+                      className="hover:scale-125 transition-all duration-300"
+                    />
+                  </button>
+                ) : (
+                  <button className="rounded-full shadow-inputTheme p-2 transition-all duration-300 hover:scale-125">
+                    <FaRegHeart
+                      color="#313EF7"
+                      size={20}
+                      onClick={() => {
+                        handleSubmitLike();
+                      }}
+                      className="hover:scale-125 transition-all duration-300"
+                    />
+                  </button>
+                )}
+              </Tooltip>
+            )}
+
+            <span>{`${blogCard?.likes?.length} likes`}</span>
           </div>
           <div className="flex items-center gap-3">
             <HiOutlineShare color="black" size={20} />
@@ -55,8 +110,8 @@ const BlogItem = ({ blog }: Props) => {
             <HiDotsVertical color="black" size={20} />
           </div>
         </div>
-        <div className="flex items-center gap-2 pb-4">
-          {blog.categories.map((category: string) => (
+        <div className="flex flex-wrap items-center gap-2 pb-4">
+          {blogCard.categories.map((category: string) => (
             <span
               className="py-1 px-3 text-xs bg-themeBlue1 rounded text-white"
               key={category}
@@ -66,10 +121,10 @@ const BlogItem = ({ blog }: Props) => {
           ))}
         </div>
         <p className="text-xl font-bold pb-4 font-montserrat">
-          {blog?.title?.slice(0, 52) + "..."}
+          {blogCard?.title?.slice(0, 52) + "..."}
         </p>
         <div className="text-gray-400 font-semibold pb-5">
-          {<Markup content={blog?.description?.slice(0, 162) + "....."} />}
+          {<Markup content={blogCard?.description?.slice(0, 162) + "....."} />}
         </div>
 
         <div className="flex items-center justify-between pb-5">
@@ -81,20 +136,18 @@ const BlogItem = ({ blog }: Props) => {
               offset={23}
             >
               <button
-                onClick={() => router.push(`/profile/${blog?.owner?._id}`)}
+                onClick={() => router.push(`/profile/${blogCard?.owner?._id}`)}
               >
-                <Image
-                  src={blog?.owner.pic}
-                  className="rounded-full"
+                <img
+                  src={blogCard?.owner.pic}
+                  className="rounded-full shadow-inputTheme w-12 h-12 object-cover"
                   alt="Blog owner"
-                  width={50}
-                  height={50}
                 />
               </button>
             </Tooltip>
             <div>
-              <p className="font-semibold">{blog?.owner?.username}</p>
-              <p className="text-gray-400">{blog?.timeCreated}</p>
+              <p className="font-semibold">{blogCard?.owner?.username}</p>
+              <p className="text-gray-400">{blogCard?.timeCreated}</p>
             </div>
           </div>
           <Tooltip
@@ -108,7 +161,7 @@ const BlogItem = ({ blog }: Props) => {
             <button
               className="p-3 rounded-full bg-themeBlue3 shadow-whity transition-all hover:scale-125"
               onClick={() => {
-                router.push(`blog/${blog?._id}`);
+                router.push(`/blog/${blogCard?._id}`);
               }}
             >
               <HiOutlineArrowNarrowRight size={20} color="white" />

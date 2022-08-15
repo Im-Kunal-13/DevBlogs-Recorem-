@@ -12,7 +12,7 @@ import {
 import { IoIosArrowDown } from "react-icons/io";
 import classnames from "classnames";
 import { useAppStateContext } from "../../context/contextProvider";
-import { headerLinks } from "../../assets/links";
+import { headerLinks } from "../../assets/links/index";
 import { FaRegBell, FaTelegramPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { BiLocationPlus } from "react-icons/bi";
@@ -223,12 +223,10 @@ const HomeNav = (props: Props) => {
             <Menu trigger="click" shadow="xl">
               <Menu.Target>
                 <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg ml-2">
-                  <Image
+                  <img
                     src={user?.pic || avatar}
-                    className="rounded-full"
+                    className="rounded-full object-cover shadow-inputTheme w-14 h-14"
                     alt="profile"
-                    width={50}
-                    height={50}
                   />
                   <p className="ml-2 font__kaushan tracking-widest cursor-pointer">
                     <span className="text-gray-400 text-14">Hi, </span>{" "}

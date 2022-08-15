@@ -1,6 +1,6 @@
-import { Drawer, Tooltip, useMantineTheme, Collapse } from "@mantine/core";
+import { Drawer, useMantineTheme, Collapse } from "@mantine/core";
 import { useAppStateContext } from "../../context/contextProvider";
-import { headerLinks } from "../../assets/links";
+import { headerLinks } from "../../assets/links/index";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";

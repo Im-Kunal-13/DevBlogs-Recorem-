@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <NotificationsProvider>
           <Component {...pageProps} />
         </NotificationsProvider>
-        <ToastContainer autoClose={2000} className="p-4 md:p-0" />
       </AppContextProvider>
     </QueryClientProvider>
   );

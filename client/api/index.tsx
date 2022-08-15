@@ -84,3 +84,35 @@ export function getBlog(blogId: string) {
       console.log(err);
     });
 }
+
+export function likePost(blogId: string) {
+  return axios
+    .put(
+      postBase + `/like/${blogId}`,
+      {},
+      {
+        withCredentials: true,
+      }
+    )
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function unlikePost(blogId: string) {
+  return axios
+    .put(
+      postBase + `/unlike/${blogId}`,
+      {},
+      {
+        withCredentials: true,
+      }
+    )
+    .then((res) => res.data)
+    .catch((err) => {
+      console.log(err);
+    });
+}

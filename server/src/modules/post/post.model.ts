@@ -17,6 +17,9 @@ export class Post {
   @prop({ required: true })
   public categories: string[];
 
+  @prop({ required: true })
+  public likes: Ref<User>[];
+
   @prop({ required: true, ref: () => User })
   public owner: Ref<User>;
 }

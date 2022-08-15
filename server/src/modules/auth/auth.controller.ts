@@ -11,7 +11,6 @@ export async function loginHandler(
 ) {
   const { email, password } = req.body;
 
-  console.log(email, password);
 
   // find the user by email
   const user = await findUserByEmail(email);

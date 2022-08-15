@@ -149,6 +149,15 @@ const RegisterModal = (props: Props) => {
             },
           }),
         });
+
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+
+        setImageUrl("");
       })
       .catch((err) => {
         console.log(err);

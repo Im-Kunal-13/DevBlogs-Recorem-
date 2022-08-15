@@ -6,6 +6,8 @@ import {
   getPostsHandler,
   getUserPostsHandler,
   getBlogHandler,
+  likeHandler,
+  unlikeHandler,
 } from "./post.controller";
 import { registerPostSchema } from "./post.schema";
 
@@ -18,10 +20,14 @@ router.post(
   registerPostHandler
 );
 
+router.put("/like/:postId", requireUser, likeHandler);
+
+router.put("/unlike/:postId", requireUser, unlikeHandler);
+
 router.get("/allposts", requireUser, getPostsHandler);
 
 router.get("/:postId", getBlogHandler);
 
-router.get("/userposts/:userId", requireUser, getUserPostsHandler)
+router.get("/userposts/:userId", requireUser, getUserPostsHandler);
 
 export default router;

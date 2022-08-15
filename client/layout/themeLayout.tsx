@@ -1,55 +1,12 @@
 import Image from "next/image";
-import { useEffect } from "react";
 import { planeBlue1, planeCyan1 } from "../assets/images/index";
 import { motion } from "framer-motion";
-import { useAppStateContext } from "../context/contextProvider";
-import { showNotification } from "@mantine/notifications";
-import { useRouter } from "next/router";
+
 
 function ThemeLayout({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-  //@ts-ignore
-  const { setUser } = useAppStateContext();
-
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem("user") || "{}");
-
-    if (
-      !(localUser.username && localUser.pic && localUser.email && localUser._id)
-    ) {
-      router.push("/");
-      showNotification({
-        id: "logout-success3",
-        radius: "md",
-        message: (
-          <h1 className="font-semibold text-xl">{"YOU'VE BEEN LOGGED OUT"}</h1>
-        ),
-        autoClose: 5000,
-        style: { height: "70px" },
-        styles: (theme) => ({
-          root: {
-            boxShadow: "0 5px 20px 3px rgb(49 62 247 / 25%)",
-            "&::before": { backgroundColor: "#313EF7" },
-          },
-
-          icon: {
-            height: "50px",
-            width: "50px",
-          },
-          closeButton: {
-            "&:hover": { backgroundColor: "transparent" },
-            transform: "scale(1.5)",
-          },
-        }),
-      });
-    } else {
-      setUser(localUser);
-    }
-  }, []);
-
   return (
     <div
-      className="w-screen overflow-x-hidden relative h-screen"
+      className="w-screen overflow-x-hidden relative"
       id="home"
       style={{ height: "100vh" }}
     >

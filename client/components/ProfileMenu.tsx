@@ -35,11 +35,9 @@ const ProfileMenu = () => {
           <p className="text-black font-semibold">{user?.username}</p>
           <p className="text-gray-400 font-medium text-sm">Software Engineer</p>
         </div>
-        <Image
+        <img
           src={user?.pic}
-          style={{ borderRadius: "50%" }}
-          width={45}
-          height={45}
+          className="rounded-full shadow-inputTheme w-10 h-10 object-cover"
           alt="profile picture"
         />
       </div>

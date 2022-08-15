@@ -1,12 +1,13 @@
 import { Select } from "@mantine/core";
 import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { useAppStateContext } from "../../context/contextProvider";
+import { categories } from "../../assets/links/index";
 
-import styles from "./ProfileSearch.module.scss";
+const ProfileSearch = () => {
+  //@ts-ignore
+  const { homeSearchQuery, setHomeSearchQuery } = useAppStateContext();
 
-type Props = {};
-
-const ProfileSearch = (props: Props) => {
   return (
     <div className="flex items-center flex-col justify-center py-14">
       <div className="p-5 shadow-searchInput rounded flex items-center gap-3">
@@ -17,19 +18,20 @@ const ProfileSearch = (props: Props) => {
           classNames={{
             input: "bg-inputBg py-6 sm:pr-40 pr-24 text-start border-none",
           }}
+          onChange={(value) => {
+            setHomeSearchQuery(value);
+          }}
+          value={homeSearchQuery}
           nothingFound="No options"
-          data={["React", "Angular", "Svelte", "Vue"]}
+          data={categories}
           styles={(theme) => ({
             item: {
-              // applies styles to selected item
               "&[data-selected]": {
                 "&, &:hover": {
                   backgroundColor: "#313EF7",
                   color: "white",
                 },
               },
-
-              // applies styles to hovered item (with mouse or keyboard)
               "&[data-hovered]": {},
             },
           })}

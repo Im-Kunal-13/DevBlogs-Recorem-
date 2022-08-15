@@ -10,12 +10,17 @@ import LogoutModal from "../../components/LogoutModal";
 import { useRouter } from "next/router";
 import { Blog, User } from "../../types";
 import { getUserBlogs, getUser } from "../../api";
+import { useAppStateContext } from "../../context/contextProvider";
+import { showNotification } from "@mantine/notifications";
 
 type Props = {};
 
 const Profile = (props: Props) => {
   const router = useRouter();
   const { userId }: any = router.query;
+
+  //@ts-ignore
+  const { setUser } = useAppStateContext();
 
   const [userState, setUserState] = useState<User | undefined>();
   const [userBlogs, setUserBlogs] = useState<Blog[]>();
@@ -29,6 +34,40 @@ const Profile = (props: Props) => {
   };
 
   useEffect(() => {
+    const localUser = JSON.parse(localStorage.getItem("user") || "{}");
+
+    if (
+      !(localUser.username && localUser.pic && localUser.email && localUser._id)
+    ) {
+      router.push("/");
+      showNotification({
+        id: "logout-success3",
+        radius: "md",
+        message: (
+          <h1 className="font-semibold text-xl">{"YOU'VE BEEN LOGGED OUT"}</h1>
+        ),
+        autoClose: 5000,
+        style: { height: "70px" },
+        styles: (theme) => ({
+          root: {
+            boxShadow: "0 5px 20px 3px rgb(49 62 247 / 25%)",
+            "&::before": { backgroundColor: "#313EF7" },
+          },
+
+          icon: {
+            height: "50px",
+            width: "50px",
+          },
+          closeButton: {
+            "&:hover": { backgroundColor: "transparent" },
+            transform: "scale(1.5)",
+          },
+        }),
+      });
+    } else {
+      setUser(localUser);
+    }
+
     init();
   }, []);
 

@@ -1,0 +1,192 @@
+[
+    {
+        "_id": "62f7941a4fbd93e212187a2d",
+        "title": "CHOOSE SUITABLE PHOTOS FOR WEB DESIGN",
+        "description": "<p>LOREM2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae minima aperiam odio in est fugiat harum. Illo dolores possimus mollitia deserunt eaque. Ut veritatis, dolor itaque eligendi, pariatur nemo accusamus distinctio dicta laborum harum omnis alias placeat blanditiis sed optio.<br></p>",
+        "coverImage": "http://res.cloudinary.com/blogify13z/image/upload/v1660392473/aunwro4q8aci7l4ywsiq.jpg",
+        "timeCreated": "August 13, 2022",
+        "categories": [
+            "next",
+            "riot",
+            "blitz",
+            "typescript",
+            "mongodb",
+            "node",
+            "vue",
+            "web design"
+        ],
+        "likes": [
+            "62f70e694786478761034784"
+        ],
+        "owner": {
+            "_id": "62f70c5d4786478761034780",
+            "username": "Ari123",
+            "email": "arindam@gmail.com",
+            "pic": "http://res.cloudinary.com/blogify13z/image/upload/v1660357729/p0da8h1iz06vtuzozzlv.jpg"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "62f7945d4fbd93e212187a2f",
+        "title": " MAKE A PROPORTIONAL HEADER DESIGN",
+        "description": "<p>LOREM2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae minima aperiam odio in est fugiat harum. Illo dolores possimus mollitia deserunt eaque. Ut veritatis, dolor itaque eligendi, pariatur nemo accusamus distinctio dicta laborum harum omnis alias placeat blanditiis sed optio.<br></p>",
+        "coverImage": "http://res.cloudinary.com/blogify13z/image/upload/v1660392540/pkfmtsfuflh3wbwveiyb.jpg",
+        "timeCreated": "August 13, 2022",
+        "categories": [
+            "next",
+            "riot",
+            "blitz",
+            "typescript",
+            "mongodb",
+            "node",
+            "vue",
+            "web design",
+            "flutter",
+            "electron.js"
+        ],
+        "likes": [
+            "62f781218680df319b12226f",
+            "62f70e694786478761034784"
+        ],
+        "owner": {
+            "_id": "62f70c5d4786478761034780",
+            "username": "Ari123",
+            "email": "arindam@gmail.com",
+            "pic": "http://res.cloudinary.com/blogify13z/image/upload/v1660357729/p0da8h1iz06vtuzozzlv.jpg"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "62f794914fbd93e212187a31",
+        "title": "WHERE TO LEARN UI DEVELOPMENT FROM?",
+        "description": "<p>LOREM2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae minima aperiam odio in est fugiat harum. Illo dolores possimus mollitia deserunt eaque. Ut veritatis, dolor itaque eligendi, pariatur nemo accusamus distinctio dicta laborum harum omnis alias placeat blanditiis sed optio.<br></p>",
+        "coverImage": "http://res.cloudinary.com/blogify13z/image/upload/v1660392593/ehovx1zith3lojqujzxz.jpg",
+        "timeCreated": "August 13, 2022",
+        "categories": [
+            "next",
+            "node",
+            "vue",
+            "web design",
+            "flutter",
+            "electron.js",
+            "rust",
+            "ar/vr"
+        ],
+        "likes": [],
+        "owner": {
+            "_id": "62f70c5d4786478761034780",
+            "username": "Ari123",
+            "email": "arindam@gmail.com",
+            "pic": "http://res.cloudinary.com/blogify13z/image/upload/v1660357729/p0da8h1iz06vtuzozzlv.jpg"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "62f794b54fbd93e212187a33",
+        "title": "LEARN GAME DEVELOPMENT IN 3 MONTHS ",
+        "description": "<p>LOREM2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae minima aperiam odio in est fugiat harum. Illo dolores possimus mollitia deserunt eaque. Ut veritatis, dolor itaque eligendi, pariatur nemo accusamus distinctio dicta laborum harum omnis alias placeat blanditiis sed optio.<br></p>",
+        "coverImage": "http://res.cloudinary.com/blogify13z/image/upload/v1660392628/qu3i0qir7zviajwfxbgs.png",
+        "timeCreated": "August 13, 2022",
+        "categories": [
+            "next",
+            "web design",
+            "flutter",
+            "electron.js",
+            "rust",
+            "ar/vr",
+            "cryptocurrency",
+            "aws"
+        ],
+        "likes": [
+            "62f781218680df319b12226f",
+            "62f70e694786478761034784"
+        ],
+        "owner": {
+            "_id": "62f70c5d4786478761034780",
+            "username": "Ari123",
+            "email": "arindam@gmail.com",
+            "pic": "http://res.cloudinary.com/blogify13z/image/upload/v1660357729/p0da8h1iz06vtuzozzlv.jpg"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "62f794d04fbd93e212187a35",
+        "title": "EXPERIENCE THE WORLD OF 3D WITH SPLINE AND THREE.JS ",
+        "description": "<p>LOREM2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae minima aperiam odio in est fugiat harum. Illo dolores possimus mollitia deserunt eaque. Ut veritatis, dolor itaque eligendi, pariatur nemo accusamus distinctio dicta laborum harum omnis alias placeat blanditiis sed optio.<br></p>",
+        "coverImage": "http://res.cloudinary.com/blogify13z/image/upload/v1660392655/zyej3ud0adzbl72k99yq.jpg",
+        "timeCreated": "August 13, 2022",
+        "categories": [
+            "next",
+            "electron.js",
+            "rust",
+            "ar/vr",
+            "cryptocurrency",
+            "react",
+            "spline",
+            "three.js"
+        ],
+        "likes": [
+            "62f70e694786478761034784"
+        ],
+        "owner": {
+            "_id": "62f70c5d4786478761034780",
+            "username": "Ari123",
+            "email": "arindam@gmail.com",
+            "pic": "http://res.cloudinary.com/blogify13z/image/upload/v1660357729/p0da8h1iz06vtuzozzlv.jpg"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "62f794f64fbd93e212187a37",
+        "title": "HOW TO MAINTAIN GREAT TEAM LEADERSHIP SKILLS AND THRIVE IN THE TECH IINDUSTRY",
+        "description": "<p>LOREM2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae minima aperiam odio in est fugiat harum. Illo dolores possimus mollitia deserunt eaque. Ut veritatis, dolor itaque eligendi, pariatur nemo accusamus distinctio dicta laborum harum omnis alias placeat blanditiis sed optio.<br></p>",
+        "coverImage": "http://res.cloudinary.com/blogify13z/image/upload/v1660392693/ebh1o7uhmtw4v1k1y7hv.jpg",
+        "timeCreated": "August 13, 2022",
+        "categories": [
+            "next",
+            "electron.js",
+            "rust",
+            "ar/vr",
+            "cryptocurrency",
+            "react",
+            "spline",
+            "three.js"
+        ],
+        "likes": [
+            "62f781218680df319b12226f",
+            "62f70e694786478761034784"
+        ],
+        "owner": {
+            "_id": "62f70c5d4786478761034780",
+            "username": "Ari123",
+            "email": "arindam@gmail.com",
+            "pic": "http://res.cloudinary.com/blogify13z/image/upload/v1660357729/p0da8h1iz06vtuzozzlv.jpg"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "62f795144fbd93e212187a39",
+        "title": "WANT TO GET INTO AUGMENTED REALITY? YOU'RE AT THE RIGHT PLACE!",
+        "description": "<p>LOREM2Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae minima aperiam odio in est fugiat harum. Illo dolores possimus mollitia deserunt eaque. Ut veritatis, dolor itaque eligendi, pariatur nemo accusamus distinctio dicta laborum harum omnis alias placeat blanditiis sed optio.<br></p>",
+        "coverImage": "http://res.cloudinary.com/blogify13z/image/upload/v1660392724/vojbfy2eaebjx1szt1y4.jpg",
+        "timeCreated": "August 13, 2022",
+        "categories": [
+            "next",
+            "electron.js",
+            "rust",
+            "ar/vr",
+            "cryptocurrency",
+            "react",
+            "spline",
+            "three.js"
+        ],
+        "likes": [],
+        "owner": {
+            "_id": "62f70c5d4786478761034780",
+            "username": "Ari123",
+            "email": "arindam@gmail.com",
+            "pic": "http://res.cloudinary.com/blogify13z/image/upload/v1660357729/p0da8h1iz06vtuzozzlv.jpg"
+        },
+        "__v": 0
+    }
+]
