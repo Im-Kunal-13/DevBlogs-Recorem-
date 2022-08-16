@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 import logger from "./logger";
 
 const DB_CONNECTION_STRING =
-  process.env.DB_CONNECTION_STRING ||
-  "mongodb+srv://ImKunal13z:Heliesstill123@cluster0.au5cr.mongodb.net/devBlogs-prototype?retryWrites=true&w=majority";
+  process.env.DB_CONNECTION_STRING || "mongodb://localhost:27017";
 
 // Function to connect to the mongodb database.
 export const connectToDatabase = async () => {
